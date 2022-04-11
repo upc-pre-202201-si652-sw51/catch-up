@@ -21,7 +21,15 @@ export class AppComponent implements OnInit {
     this.newsApi.getSources().subscribe((data: any) => {
       this.sources = data['sources'];
       this.sources.map(source => source.urlToLogo = this.logoApi.getUrlToLogo(source));
-    })
+    });
+  }
+
+  searchArticlesForSource(source: any) {
+    console.log(`selected source is ${source.id}`);
+    this.newsApi.getArticlesBySourceId(source.id).subscribe((data:any) => {
+      this.articles = data['articles'];
+      this.articles.map(article => article.source.urlToLogo = source.urlToLogo);
+    });
   }
 
 
