@@ -1,21 +1,16 @@
-.grid-container {
-  margin: 20px;
+.article-card {
+  margin: 4px;
 }
 
-.dashboard-card {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
+.actions-section {
+  display: flex;
 }
 
-.more-button {
-  position: absolute;
-  top: 5px;
-  right: 10px;
+.action-button {
+  text-transform: uppercase;
+  font-size: large;
 }
 
-.dashboard-card-content {
-  text-align: center;
+.default-spacer {
+  flex: 1 1 auto;
 }
