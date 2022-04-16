@@ -3,11 +3,13 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar>Sources</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <mat-list-item *ngFor="let source of sources"
+                     (click)="onSourceSelected(source);drawer.toggle();">
+        <img mat-list-avatar [src]="source.urlToLogo" [alt]="source.name">
+        <p mat-line><span>{{ source.name }}</span></p>
+      </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -20,8 +22,9 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>catch-up-with-angular</span>
+      <span>CatchUp</span>
     </mat-toolbar>
-    <!-- Add Content Here -->
+    <app-main-content [articles]="articles"></app-main-content>
+    <app-footer-content></app-footer-content>
   </mat-sidenav-content>
 </mat-sidenav-container>
